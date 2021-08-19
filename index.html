@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    height: 2000px;
+  }
+
+  #car {
+    width: 600px;
+    height: 350px;
+    position: fixed;
+    background: transparent url(./car.jpg);
+  }
+</style>
+
+<body>
+  <div id="car"></div>
+  <script>
+    let car = document.querySelector("#car");
+    let countIndicator = document.querySelector(".counter");
+
+    let imageCount = 61;
+    let imageWidth = 600;
+    let imageHeight = 350;
+    window.addEventListener("scroll", function (e) {
+      const { scrollTop } = e.target.scrollingElement;
+      let StepCount = Math.floor((scrollTop / 10) % imageCount);
+
+      let xStepCount = StepCount % 13;
+      let yStepCount = Math.floor(StepCount / 13);
+
+      x = xStepCount * imageWidth * -1;
+      y = yStepCount * imageHeight * -1;
+      car.style.backgroundPosition = x + "px " + y + "px";
+    });
+
+  </script>
+</body>
+
+</html>
